@@ -1,0 +1,84 @@
+
+<section style="padding: 0 250px;" class="sample-app-content">
+    <h1>Template form</h1>
+    <div>
+        <div  *ngFor="let item of formData">
+
+            <div *ngIf="item.items.length == 0">
+                <div class="card">
+                    <div class="input-div">
+                        <label>{{item.text}}</label>
+                        <input class="input"  [(ngModel)]="item.value"  (change)="modelChangeFn($event)" type="text" >
+                    </div>
+                    <div style="margin: 10px;">
+                        <label *ngIf="error && !item.value" class="warning">field can not be empty</label>
+                    </div>
+                </div>
+
+                
+            </div>
+            
+            <div *ngIf="item.items.length > 0">
+                <label style="font-weight: bold;margin: 5px;">{{item.text}}</label>
+                <div *ngFor="let el of item.items">
+                    <div class="card">
+                        <div class="input-div">
+                            <label>{{el.text}}</label>
+                            <input class="input"  [(ngModel)]="el.value"  (change)="modelChangeFn($event)" type="text" >
+                        </div>
+                        <div style="margin: 10px;">
+                            <label *ngIf="error && !el.value" class="warning">field can not be empty</label>
+                        </div>
+                    </div>
+                
+                </div>
+              
+            </div>
+           
+        </div>
+        <div >
+            <button style="width: 200px;background: #2ecc71;" (click)="submit()">Submmit</button>
+        </div>
+        
+     
+        
+    </div>
+</section>
+<section style="padding: 0 250px;margin-top: 20px;" *ngIf="valid">
+    <h1>Results</h1>
+    <div>
+        <div  *ngFor="let item of formData">
+
+            <div *ngIf="item.items.length == 0">
+                <div class="card">
+                    <div class="input-div">
+                        <label>{{item.text}}</label>
+                        <label style="font-weight:bold">{{item.value}}</label>
+                    </div>
+                 
+                </div>
+
+                
+            </div>
+            
+            <div *ngIf="item.items.length > 0">
+                <label style="font-weight: bold;margin: 5px;">{{item.text}}</label>
+                <div *ngFor="let el of item.items">
+                    <div class="card">
+                        <div class="input-div">
+                            <label>{{el.text}}</label>
+                            <label>{{el.value}}</label>
+                        </div>
+                  
+                    </div>
+                
+                </div>
+              
+            </div>
+           
+        </div>
+         
+        
+    </div>
+
+</section>
